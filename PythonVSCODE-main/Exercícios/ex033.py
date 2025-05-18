@@ -1,0 +1,8 @@
+p1_valor = int(input('Primeiro Valor: '))
+p2_valor = int(input('Segundo Valor: '))
+p3_valor = int(input('Terceiro Valor: '))
+maior_valor = max(p1_valor, p2_valor, p3_valor)
+menor_valor = min(p1_valor, p2_valor, p3_valor)
+print('=='*15)
+print(f'O maior valor é: {maior_valor}')
+print(f'O menor valor é: {menor_valor}')

@@ -5,3 +5,4 @@ def escreva(msg):
 
 
 escreva('Olá como vai?')
+escreva('Geronimus gosta de pão de batata e pão pizza gratis')

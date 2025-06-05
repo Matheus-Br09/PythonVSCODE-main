@@ -8,9 +8,10 @@ def conta_vogais(msg):
     for c in msg:
         if c in "aeiou":
             dic_vogais[c] += 1
+    
 
 
 
-conta_vogais("Ola como vai voce")
+conta_vogais("eu quero saber, tu joga lol?")
 for c in dic_vogais:
-    print(f'{c}: {dic_vogais[c]}')
+        print(c, dic_vogais[c])

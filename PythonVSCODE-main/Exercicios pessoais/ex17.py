@@ -7,7 +7,7 @@ while True:
     qtd_partidas = int(input(f"Quantas partidas {dados_jogador['Nome']} jogou? "))
     dados_jogador["Gols"] = []
     for i in range(0, qtd_partidas):
-        gols = int(input(f"Quantos gols na partida {i}? "))
+        gols = int(input(f"Quantos gols na partida {i+1}? "))
         dados_jogador["Gols"] += [gols]
     dados_jogador["Total"] = sum(dados_jogador["Gols"])
     jogadores_Cadastrados.append(dados_jogador.copy())
@@ -26,7 +26,7 @@ for k, v in enumerate(jogadores_Cadastrados):
     print(f'     {v["Total"]}')
 print('---'*13)
 while True:
-    escolha = int(input("Mostrar dados de qual jogador? "))
+    escolha = int(input("Mostrar dados de qual jogador? (999 para parar) "))
     if escolha == 999:
         break
     if escolha >= len(jogadores_Cadastrados):
@@ -34,6 +34,6 @@ while True:
     else:
         print(f"-- LEVANTAMENTO DO JOGADOR {jogadores_Cadastrados[escolha]["Nome"]}")
         for k, v in enumerate(jogadores_Cadastrados[escolha]["Gols"]):
-            print(f'   No jogo {k} fez {v} gols.')
+            print(f'   No jogo {k+1} fez {v} gols.')
 
 print('<<<( ENCERRADO )>>>')

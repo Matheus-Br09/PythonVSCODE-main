@@ -1,65 +1,31 @@
-import os
+import createarchives
 from time import sleep
 
-def tam_linhas(msg):
-    print('--'*(len(msg) + 6))
-    print(f'             {msg}')
-    print('--'*(len(msg) + 6))
 
-conteudo = ""
 opcao = 0
 while opcao != 3:
-    tam_linhas("MENU PRINCIPAL")
-    print("1 - Ver pessoas cadastradas"\
+    createarchives.tam_linhas("MENU PRINCIPAL")
+    print("\033[35m1 - Ver pessoas cadastradas"\
           "\n2 - Cadastrar nova pessoa"\
-          "\n3 - Sair do sistema")
+          "\n3 - Sair do sistema\033[m")
     print('--'*20)
 
-    try:
-        opcao = int(input("Sua opção: "))
-    except (TypeError, ValueError):
-        print("\033[31mERRO! Digite uma opção válida!\033[m")
-        sleep(1)
-    else:
-        if opcao > 3 or opcao < 1:
-            print("\033[31mERRO! Digite uma opção válida!\033[m")
-            sleep(1)
-        else:
-            if opcao == 3:
-                break
-    print('--'*20)
-    print(f'                 OPÇÃO {opcao}')
-    print('--'*20)
+    opcao = createarchives.escolha_opcao("\033[34mSua opção: \033[m")
+
     if opcao == 1:
-        try:
-            f = open("PythonVSCODE-main/Exercícios/Ex115/cadastro_pessoas.txt", "r")
-            conteudo = f.read()
-        except (FileNotFoundError):
-            print("\033[31mArquivo não existente! Crie um cadastro para continuar...\033[m")
-            sleep(1)
-        else:
-            print('--'*20)
-            print(conteudo)
-            print('--'*20)
-            sleep(1)       
+        createarchives.mostrar_cadastrados("PythonVSCODE-main/Exercícios/Ex115/cadastro_pessoas.txt")
+        sleep(3)
     
     if opcao == 2:
-        tam_linhas("CADASTRO PESSOA")
-        try: 
-            f = open("PythonVSCODE-main/Exercícios/Ex115/cadastro_pessoas.txt", "x")
-        except (FileExistsError):
-            continue
-        finally:
-            nome = str(input("Nome: "))
-            try:
-                idade = int(input("Idade: "))
-            except (ValueError, TypeError):
-                print("\033[31mERRO! Digite o valor corretamente...\033[m")
-                sleep(1)
-            else:
-                with open("PythonVSCODE-main/Exercícios/Ex115/cadastro_pessoas.txt", "a") as f:
-                    f.write(f"{nome:<20}         {idade} Anos" + "\n")
+        createarchives.tam_linhas("CADASTRO PESSOA")
+        nome = str(input("Nome: "))
+        try:
+            idade = int(input("Idade: "))
+        except (ValueError, TypeError):
+            print("\033[31mERRO! Digite o valor corretamente...\033[m")
+            sleep(1)
+        else:
+            createarchives.cadastro_pessoas(nome, idade)
 
 
-
-tam_linhas("Volte Sempre")
+createarchives.tam_linhas("<Volte Sempre>")

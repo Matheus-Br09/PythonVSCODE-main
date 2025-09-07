@@ -16,7 +16,7 @@ class Pessoa:
         if self.come:
             print(f'{self.nome} parou de comer')
             self.come = False
-        else:
+        else:  
             print(f'{self.nome} já parou de comer!')
             
 
@@ -25,6 +25,7 @@ class Pessoa:
             print(f'{self.nome} não pode falar comendo')
         else:
             print(f'{self.nome} está falando sobre {assunto}')
+            self.falando = True
 
 
     def parar_falar(self):
@@ -33,9 +34,3 @@ class Pessoa:
             self.falando = False
         else:
             print(f'{self.nome} já parou de falar')
-
-
-pessoa = Pessoa("Matheus", 29, True)
-pessoa.comer("Banana")
-pessoa.parar_comer()
-pessoa.falar("Muitas coisas")
